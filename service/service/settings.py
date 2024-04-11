@@ -1,3 +1,4 @@
+# flake8: noqa
 import os
 
 from pathlib import Path
@@ -105,3 +106,18 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler'},
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'
